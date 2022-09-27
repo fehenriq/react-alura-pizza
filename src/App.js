@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Prato from './components/Prato/Prato';
 
 function App() {
+  const [pratos, setPratos] = useState([])
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/pratos/')
+      .then(resposta => resposta.json())
+      .then(dados => {
+        setPratos(dados)
+      })
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='banner-container'>
+        <img src="/img/banner.png" alt="banner mostrando uma pizza" />
+      </div>
+      <div className='logo-container'>
+        <img src="/img/logo.png" alt="logo do alura pizza" />
+      </div>
+      <section className='cardapio'>
+        {pratos.map(prato => 
+        (<Prato 
+          key={prato.id} 
+          nome={prato.nome} 
+          descricao={prato.descricao} 
+          imagem={prato.imagem}
+          preco={prato.preco}
+        />))}
+      </section>
     </div>
   );
 }
