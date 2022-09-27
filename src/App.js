@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './App.css';
+import './App.css'
 import Prato from './components/Prato/Prato';
 
 function App() {
@@ -16,17 +16,17 @@ function App() {
   return (
     <div className="App">
       <div className='banner-container'>
-        <img src="/img/banner.png" alt="banner mostrando uma pizza" />
+        <img src="/img/banner.png" alt="Um banner mostrando uma pizza" />
       </div>
       <div className='logo-container'>
-        <img src="/img/logo.png" alt="logo do alura pizza" />
+        <img src="/img/logo.png" alt="Logo da Alura Pizza" />
       </div>
       <section className='cardapio'>
-        {pratos.map(prato => 
-        (<Prato 
-          key={prato.id} 
-          nome={prato.nome} 
-          descricao={prato.descricao} 
+        {pratos.map(prato =>
+        (<Prato
+          key={prato.id}
+          nome={prato.nome}
+          descricao={prato.descricao}
           imagem={prato.imagem}
           preco={prato.preco}
         />))}
